@@ -14,6 +14,8 @@
 <div id="root04"></div>
 <div id="root05"></div>
 <div id="root06"></div>
+<div id="root07"></div>
+<div id="root08"></div>
 <script src="js/react.development.js"></script>
 <script src="js/react-dom.development.js"></script>
 <script src="js/prop-types.js"></script>
@@ -192,6 +194,76 @@
     }
 
     ReactDOM.render(<App06/>, document.getElementById('root06'))
+</script>
+<script type="text/babel">
+    /**
+     * 表单提交
+     */
+    class App07 extends React.Component {
+
+        state = {
+            val: ''
+        }
+
+        handlerSubmit = e => {
+            console.log(this.state.val)
+            // 阻止默认行为
+            e.preventDefault()
+        }
+
+        render() {
+            return (
+                <div>
+                    <form action="https://www.baidu.com" method="post" onSubmit={this.handlerSubmit}>
+                        <input value={this.state.val} onChange={e => this.setState({val: e.target.value})}/>
+                        <input type="submit"/>
+                    </form>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<App07/>, document.getElementById('root07'))
+</script>
+<script type="text/babel">
+    /**
+     * 生命周期
+     */
+    class LifeCycle extends React.Component {
+
+        state = {
+            opacity: 1
+        }
+
+        componentDidMount() {
+            this.timeID = setInterval(() => {
+                let {opacity} = this.state
+                opacity -= 0.1
+                if (opacity <= 0) {
+                    opacity = 1
+                }
+                this.setState({opacity})
+                console.log('a')
+            }, 100)
+        }
+
+        componentWillUnmount() {
+            clearInterval(this.timeID)
+        }
+
+        render() {
+            const {opacity} = this.state
+            return (
+                <div>
+                    <h3 style={{opacity}}>Hi</h3>
+                    <button onClick={() => ReactDOM.unmountComponentAtNode(document.getElementById('root08'))}>消失
+                    </button>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<LifeCycle/>, document.getElementById('root08'))
 </script>
 </body>
 </html>
