@@ -11,8 +11,10 @@
 <div id="root01"></div>
 <div id="root02"></div>
 <div id="root03"></div>
+<div id="root04"></div>
 <script src="js/react.development.js"></script>
 <script src="js/react-dom.development.js"></script>
+<script src="js/prop-types.js"></script>
 <script src="js/babel.js"></script>
 <script type="text/babel">
     /**
@@ -66,6 +68,35 @@
     }
 
     ReactDOM.render(<Like/>, document.getElementById('root03'))
+</script>
+<script type="text/babel">
+    /**
+     *props
+     */
+    function Person(props) {
+        return (
+            <ul>
+                <li>姓名：{props.name}</li>
+                <li>年龄：{props.age}</li>
+                <li>性别：{props.gender}</li>
+            </ul>
+        )
+    }
+
+    /**
+     * 默认值
+     */
+    Person.defaultProps = {
+        age: 18
+    }
+    /**
+     * 类型检查
+     */
+    Person.propTypes = {
+        name: PropTypes.string.isRequired
+    }
+    const p1 = {name: 'Taylor', gender: '女'}
+    ReactDOM.render(<Person {...p1}/>, document.getElementById('root04'))
 </script>
 </body>
 </html>
