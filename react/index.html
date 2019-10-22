@@ -8,12 +8,64 @@
     <title>React App</title>
 </head>
 <body>
-<div id="root"></div>
+<div id="root01"></div>
+<div id="root02"></div>
+<div id="root03"></div>
 <script src="js/react.development.js"></script>
 <script src="js/react-dom.development.js"></script>
 <script src="js/babel.js"></script>
 <script type="text/babel">
-    ReactDOM.render(<h1>Hello, world!</h1>, document.getElementById('root'))
+    /**
+     *自定义组件
+     */
+    function MyComponent01() {
+        return (
+            <h3>自定义组件</h3>
+        )
+    }
+
+    class MyComponent02 extends React.Component {
+        render() {
+            return (
+                <div>
+                    自定义组件
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<MyComponent01/>, document.getElementById('root01'))
+    ReactDOM.render(<MyComponent02/>, document.getElementById('root02'))
+</script>
+<script type="text/babel">
+    /**
+     * state
+     */
+    class Like extends React.Component {
+        constructor(props) {
+            super(props)
+            this.state = {
+                isLike: false
+            }
+            this.handlerChange = this.handlerChange.bind(this)
+        }
+
+        handlerChange() {
+            const isLike = !this.state.isLike
+            this.setState({isLike})
+        }
+
+        render() {
+            const {isLike} = this.state
+            return (
+                <div onClick={this.handlerChange}>
+                    {isLike ? '哈哈' : '呵呵'}
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<Like/>, document.getElementById('root03'))
 </script>
 </body>
 </html>
