@@ -7,3 +7,5 @@
     yarn start
 
     yarn build
+    
+    yarn add redux-thunk redux异步中间件
