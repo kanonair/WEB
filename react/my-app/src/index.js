@@ -1,5 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
+import CommentComponent from './comment'
 
-ReactDOM.render(<App/>, document.getElementById('root'))
+ReactDOM.render(<CommentComponent/>, document.getElementById('root'))
