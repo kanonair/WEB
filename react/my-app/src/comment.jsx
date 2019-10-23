@@ -14,9 +14,11 @@ export default class CommentComponent extends React.Component {
     }
 
     delComment = index => {
-        const {comments} = this.state
-        comments.splice(index, 1)
-        this.setState({comments})
+        if (window.confirm('delete this comment ?')) {
+            const {comments} = this.state
+            comments.splice(index, 1)
+            this.setState({comments})
+        }
     }
 
     render() {
@@ -72,18 +74,15 @@ class ListComponent extends React.Component {
     }
 
     render() {
-        if (this.props.comments.length) {
-            return (
-                <ul>
-                    {this.props.comments.map((comment, index) => <ItemComponent delComment={this.props.delComment}
-                                                                                comment={comment} index={index}
-                                                                                key={index}/>)}
-                </ul>
-            )
-        } else {
-            return (<div>暂无评论</div>)
-        }
-
+        const display = this.props.comments.length ? 'none' : 'block'
+        return (
+            <ul>
+                <li style={{display}}>暂无评论</li>
+                {this.props.comments.map((comment, index) => <ItemComponent delComment={this.props.delComment}
+                                                                            comment={comment} index={index}
+                                                                            key={index}/>)}
+            </ul>
+        )
     }
 }
 
