@@ -15,6 +15,7 @@
 </template>
 
 <script>
+    // this.$router.back()
     export default {
         data() {
             return {
