@@ -7,6 +7,7 @@
         <router-link to="/about">About</router-link>
         <router-link to="/home">Home</router-link>
         <router-view/>
+        <VuexDemo/>
     </div>
 </template>
 
@@ -25,12 +26,15 @@
 
     import SlotDemo from './components/slot/SlotDemo'
 
+    import VuexDemo from './components/vuex/VuexDemo'
+
     import axios from 'axios'
 
     export default {
         components: {
             Comment,
-            SlotDemo
+            SlotDemo,
+            VuexDemo
         },
         mounted() {
             axios.get('http://192.168.1.119:8080/').then(res => {
