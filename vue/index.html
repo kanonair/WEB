@@ -6,9 +6,52 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vue App</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-<div id="root"></div>
+<div id="root">
+    <button @click="getVal($event)">点击</button>
+    <div v-cloak>{{time | formatDate('YYYY-MM-DD HH:mm:ss')}}</div>
+</div>
 <script src="js/vue.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+<script>
+    new Vue({
+        el: '#root',
+        data() {
+            return {
+                time: new Date()
+            }
+        },
+        methods: {
+            getVal(event) {
+
+                // 事件冒泡
+                // event.stopPropagation()
+                // @click.stop
+
+                // 事件默认行为
+                // event.preventDefault()
+                // @click.prevent
+
+                // 按键修饰符
+                // @click.enter
+                // @click.13
+
+                console.log(event.target.innerText)
+
+            }
+        },
+        filters: {
+            formatDate(date, format = 'YYYY-MM-DD HH:mm:ss') {
+                return moment(date).format(format)
+            }
+        }
+    })
+</script>
 </body>
 </html>
