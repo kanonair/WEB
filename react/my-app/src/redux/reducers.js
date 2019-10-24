@@ -1,6 +1,7 @@
+import {combineReducers} from 'redux'
 import {INCREMENT, DECREMENT} from './action-types'
 
-export function counter(state = 0, action) {
+function counter(state = 0, action) {
     switch (action.type) {
         case INCREMENT:
             return state + action.data
@@ -10,3 +11,7 @@ export function counter(state = 0, action) {
             return state
     }
 }
+
+export default combineReducers({counter})
+
+// {counter:0,comments:[]} 状态对象结构

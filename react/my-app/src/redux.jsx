@@ -51,6 +51,6 @@ class ReduxComponent extends React.Component {
 }
 
 export default connect(
-    state => ({count: state}),
+    state => ({count: state.counter}),
     {increment, decrement, incrementAsync}
 )(ReduxComponent)
