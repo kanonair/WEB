@@ -8,7 +8,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js'
     },
-    mode: 'production',
+    mode: 'development',
     module: {
         rules: [
             {
@@ -39,6 +39,19 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: [["@babel/preset-env", {
+                            corejs: 3,
+                            useBuiltIns: "usage"// 按需加载
+                        }]]
+                    }
+                }
             }
         ]
     },
