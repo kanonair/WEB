@@ -25,9 +25,9 @@ router.post('/register', async (req, res) => {
     const user = await userModel.findOne({email})
     if (!user) {
         await userModel.create({email, nickname, password})
-        res.send('注册成功')
+        res.render('login')
     } else {
-        res.send('邮箱已被注册')
+        res.render('register', {msg: '邮箱已被注册'})
     }
 })
 
