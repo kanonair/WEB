@@ -60,4 +60,21 @@
         
     mongoose
     
+        *uniq[数组去重排序]
     
+    node服务器
+    
+        const http = require('http')
+        const querystring = require('querystring')
+        
+        http.createServer((req, res) => {
+            console.log(querystring.parse(req.url.split('?')[1]))
+            res.setHeader('content-type', 'text/html;charset=utf-8')
+            res.end('你好')
+        }).listen(
+            3000,
+            error => !error && console.log('listening 3000'))
+    
+    express
+    
+        *fehelper[Chrome插件] https://github.com/zxlie/FeHelper
