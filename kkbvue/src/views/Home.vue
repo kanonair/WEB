@@ -1,8 +1,8 @@
 <template>
     <div class="home">
         <img alt="Vue logo" src="../assets/logo.png">
-        <button v-if="$store.state.isLogin" @click="test">测试</button>
         <HelloWorld msg="Welcome to Your Vue.js App"/>
+        <button v-if="$store.state.isLogin" @click="test">测试</button>
     </div>
 </template>
 
